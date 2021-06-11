@@ -77,6 +77,7 @@ gfeatures <- genomeDerivedFeatures(x = grg,
                                    transcriptdb = txdb,
                                    sequence = bsgenome,
                                    gscores = phastcons)
+                                   
 str(gfeatures) #Display the columns (features)
 ```
 
