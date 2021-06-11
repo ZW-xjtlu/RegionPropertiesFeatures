@@ -12,7 +12,7 @@ Another important question in the analysis of functional genomic data is to iden
 
 ## Overview of functionalities
 
-*PredictiveFeatures* provides fast and comprehensive feature extraction from the
+*RPF* provides fast and comprehensive feature extraction from the
 range-based genome annotation; the extracted features can be used as the
 input for a variety of modeling purposes such as supervised predictive
 modeling and unsupervised factor analysis. The target range-based
@@ -22,7 +22,7 @@ Alternatively, the *GRanges* can be imported from the external
 annotation files in **BED**, **GFF**, or **GTF** formats using the
 `import` function defined in *dplyr* package.
 
-There are 2 types of genomic features implemented in *PredictiveFeatures*: the
+There are 2 types of genomic features implemented in *RPF*: the
 region properties features, and the sequence-derived features. The
 former is extracted using an interactive design between the genomic
 properties and the genomic regions, the latter is the sequence-derived
@@ -33,11 +33,11 @@ pseudo nucleotide composition method.
 
 <div class="figure" style="text-align: left">
 
-<img src="inst/figures/PredictiveFeatures_v1.0.png" alt="Feature extraction framework of PredictiveFeatures" width="100%" />
+<img src="inst/figures/RPF_v1.0.png" alt="Feature extraction framework of RPF" width="100%" />
 
 <p class="caption">
 
-Feature extraction framework of PredictiveFeatures
+Feature extraction framework of RPF
 
 </p>
 
@@ -48,7 +48,7 @@ Feature extraction framework of PredictiveFeatures
 Installation from github can be initiated with the following command:
 
 ``` r
-devtools::install_github("zw-xjtlu/PredictiveFeatures")
+devtools::install_github("zw-xjtlu/RPF")
 ```
 
 ## Quick start
@@ -76,9 +76,9 @@ grg <- GRanges(seqnames = rep(c("chr1", "chr2"), c(5, 15)),
 
 ## Complete User's Guide
 
-For getting more information about the usage of PredictiveFeatures, enter the following R command after installation to view the instruction file:
+For getting more information about the usage of RPF, enter the following R command after installation to view the instruction file:
 
 ``` r
-PredictiveFeatures::PredictiveFeaturesUsersGuide()
+RPF::RPFUsersGuide()
 ```
 
