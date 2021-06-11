@@ -2,8 +2,6 @@ RPF Package Introduction
 ================
 2021-06-11
 
-# Introduction
-
 **RPF** is a package for the extraction of comprehensive features on genomic intervals. A fundamental task in a genomic data science project is to extract informative genomic metrics that can predict quantities defined on range-based genomic annotations. In the past, the feature engineering tasks are often handled by a small number of handcrafted genome-derived features and sequence features. However, these methods cannot fully explore the interactive space between genomic regions and different genomic properties, such as the length and sequence contents.
 
 The methods implemented in the RPF package can extract a wide range of properties defined on genomic regions, including length, sequence contents, genomic scores, clustering effects, distance toward the 5'/3' ends, and the relative positions of annotation on regions. When extracting genomic features with its main function, various genome properties are interactively extracted from the genomic regions of exons, introns, genes, transcripts, promoters, 5'UTR, 3'UTR, and CDS, establishing a large collection of genome-derived feature set. The input data for RPF are any target genome annotation stored in a Granges object. For example, the target can be intervals of peaks or sites obtained by high-throughput sequencing assays (such as par-CLIP, iCLIP, ChIP-Seq, and meRIP-Seq).
