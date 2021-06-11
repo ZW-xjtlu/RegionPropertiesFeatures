@@ -81,6 +81,14 @@ gfeatures <- genomeDerivedFeatures(x = grg,
 str(gfeatures) #Display the columns (features)
 ```
 
+The following additional functions will be explained in the user's guide:
+
+- If you want to extract features from DNA sequences (with *one-hot encoding*, *PseTNC*, ect.) you could store the regions of the DNA sequences into GRanges, and then you can use `sequenceDerivedFeatures()`.
+
+- If you want to introduce mutations such as SNPs into sequence-derived features, which is often used by in-silico mutation analysis, you can use the `mutation` argument in `sequenceDerivedFeatures()`.
+
+- If you want to define other properties over genomic regions, you can use `extractRegionProperty()`.
+
 ## Complete User's Guide
 
 For getting more information about the usage of RPF, enter the following R command after installation to view the instruction file:
