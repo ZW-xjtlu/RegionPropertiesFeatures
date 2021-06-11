@@ -62,16 +62,22 @@ library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(phastCons100way.UCSC.hg19)
 
-txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
-bsgenome <- BSgenome.Hsapiens.UCSC.hg19
-phastcons <- phastCons100way.UCSC.hg19
+txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene #Transcript annotation
+bsgenome <- BSgenome.Hsapiens.UCSC.hg19 #Reference genome
+phastcons <- phastCons100way.UCSC.hg19 #Conservation score
 
 set.seed(737)
 grg <- GRanges(seqnames = rep(c("chr1", "chr2"), c(5, 15)),
-               ranges = IRanges(c(sample(11874:12127, 5), 
-                                  sample(38814:41527, 15)), 
-                                width=1),
-               strand = Rle(c("+", "-"), c(5, 15)))
+                           ranges = IRanges(c(sample(11874:12127, 5), 
+                                                            sample(38814:41527, 15)), 
+                                                         width=1),
+                           strand = Rle(c("+", "-"), c(5, 15)))
+              
+gfeatures <- genomeDerivedFeatures(x = grg,
+                                                             transcriptdb = txdb,
+                                                             sequence = bsgenome,
+                                                             gscores = phastcons)
+str(gfeatures) #Display the columns (features)
 ```
 
 ## Complete User's Guide
