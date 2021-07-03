@@ -216,7 +216,7 @@ genomeDerivedFeatures <- function(x,
     annotBiotype=annotBiotype,
     extraRegions=extraRegions
   ) + ifelse(annotSeqnames,length(xSeqlevels),0)
-  cat(paste0(packageVersion("PredictiveFeatures"), paste(rep(" ", 75-nchar(packageVersion("PredictiveFeatures"))),collapse = ""),"##\n"), append=TRUE)
+  cat(paste0(packageVersion("RPF"), paste(rep(" ", 75-nchar(packageVersion("RPF"))),collapse = ""),"##\n"), append=TRUE)
   cat("## --------------------------------------------------------------------------------------------------------------------------------------- ##\n", append=TRUE)
   cat("##                                   The total number of genome-derived features to be extracted: ", append=FALSE)
   message_env$total <- calculate_total(
@@ -528,7 +528,7 @@ genomeDerivedFeatures <- function(x,
   cat("## --------------------------------------------------------------------------------------------------------------------------------------- ## \n", append=TRUE)
   
   exbg <- EnsureUCSC(exonsBy(transcriptdb,"gene"),x)
-  Message_i("logGeneExonNumber","log2(exon number of genes + 1)",message_env)
+  Message_i("log2_GeneExonNumber","log2(exon number of genes + 1)",message_env)
   X[["logGeneExonNumber"]] <- log2(extractRegionProperty(x,
                                                          property=elementNROWS(exbg), 
                                                          region=range(exbg), 
@@ -536,7 +536,7 @@ genomeDerivedFeatures <- function(x,
   cat("Done\n", append=TRUE)
   rm(exbg)
   
-  Message_i("log2TxIsoformNumber", "log2(transcript isoform number of genes + 1)",message_env)
+  Message_i("log2_TxIsoformNumber", "log2(transcript isoform number of genes + 1)",message_env)
   txbg <- EnsureUCSC(transcriptsBy(transcriptdb,"gene"),x)
   X[["log2TxIsoformNumber"]] <- log2(extractRegionProperty(x,
                                                            property=elementNROWS(txbg), 
