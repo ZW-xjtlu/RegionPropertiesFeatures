@@ -529,7 +529,7 @@ genomeDerivedFeatures <- function(x,
   
   exbg <- EnsureUCSC(exonsBy(transcriptdb,"gene"),x)
   Message_i("log2_GeneExonNumber","log2(exon number of genes + 1)",message_env)
-  X[["logGeneExonNumber"]] <- log2(extractRegionProperty(x,
+  X[["log2_GeneExonNumber"]] <- log2(extractRegionProperty(x,
                                                          property=elementNROWS(exbg), 
                                                          region=range(exbg), 
                                                          nomapValue = nomapValue)+1)
@@ -538,7 +538,7 @@ genomeDerivedFeatures <- function(x,
   
   Message_i("log2_TxIsoformNumber", "log2(transcript isoform number of genes + 1)",message_env)
   txbg <- EnsureUCSC(transcriptsBy(transcriptdb,"gene"),x)
-  X[["log2TxIsoformNumber"]] <- log2(extractRegionProperty(x,
+  X[["log2_TxIsoformNumber"]] <- log2(extractRegionProperty(x,
                                                            property=elementNROWS(txbg), 
                                                            region=range(txbg), 
                                                            nomapValue = nomapValue)+1)
@@ -893,4 +893,3 @@ quiet <- function(x) {
 }
 
 ##To Do: support the selection of properties
-##To Do2: support the user supplementation of regions
