@@ -1,0 +1,4 @@
+## -----------------------------------------------------------------------------
+library(RegionPropertiesFeatures)
+RPFUsersGuide()
+
