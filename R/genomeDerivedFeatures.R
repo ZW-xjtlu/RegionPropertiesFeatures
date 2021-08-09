@@ -206,7 +206,7 @@ genomeDerivedFeatures <- function(x,
   message_env <- new.env()
   message_env$count <- 1
   cat("#############################################################################################################################################\n", append=TRUE)
-  cat("##                                               RPF Package Version: ", append=FALSE)
+  cat("##                                               RegionPropertiesFeatures Package Version: ", append=FALSE)
   message_env$total <- calculate_total(
     transcriptdb=transcriptdb,
     bsgenome=sequence,
@@ -216,7 +216,7 @@ genomeDerivedFeatures <- function(x,
     annotBiotype=annotBiotype,
     extraRegions=extraRegions
   ) + ifelse(annotSeqnames,length(xSeqlevels),0)
-  cat(paste0(packageVersion("RPF"), paste(rep(" ", 75-nchar(packageVersion("RPF"))),collapse = ""),"##\n"), append=TRUE)
+  cat(paste0(packageVersion("RegionPropertiesFeatures"), paste(rep(" ", 75-nchar(packageVersion("RegionPropertiesFeatures"))),collapse = ""),"##\n"), append=TRUE)
   cat("## --------------------------------------------------------------------------------------------------------------------------------------- ##\n", append=TRUE)
   cat("##                                   The total number of genome-derived features to be extracted: ", append=FALSE)
   message_env$total <- calculate_total(

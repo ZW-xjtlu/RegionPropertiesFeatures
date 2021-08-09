@@ -1,16 +1,16 @@
-RPF Package Introduction
+RegionPropertiesFeatures Package Introduction
 ================
 2021-06-11
 
-**RPF** is a package for the extraction of comprehensive features on genomic intervals. A fundamental task in a genomic data science project is to extract informative genomic metrics that can predict quantities defined on range-based genomic annotations. In the past, the feature engineering tasks are often handled by a small number of handcrafted genome-derived features and sequence features. However, these methods cannot fully explore the interactive space between genomic regions and different genomic properties, such as the length and sequence contents.
+**RegionPropertiesFeatures** is a package for the extraction of comprehensive features on genomic intervals. A fundamental task in a genomic data science project is to extract informative genomic metrics that can predict quantities defined on range-based genomic annotations. In the past, the feature engineering tasks are often handled by a small number of handcrafted genome-derived features and sequence features. However, these methods cannot fully explore the interactive space between genomic regions and different genomic properties, such as the length and sequence contents.
 
-The methods implemented in the RPF package can extract a wide range of properties defined on genomic regions, including length, sequence contents, genomic scores, clustering effects, distance toward the 5'/3' ends, and the relative positions of annotation on regions. When extracting genomic features with its main function, various genome properties are interactively extracted from the genomic regions of exons, introns, genes, transcripts, promoters, 5'UTR, 3'UTR, and CDS, establishing a large collection of genome-derived feature set. The input data for RPF are any target genome annotation stored in a Granges object. For example, the target can be intervals of peaks or sites obtained by high-throughput sequencing assays (such as par-CLIP, iCLIP, ChIP-Seq, and meRIP-Seq).
+The methods implemented in the RegionPropertiesFeatures package can extract a wide range of properties defined on genomic regions, including length, sequence contents, genomic scores, clustering effects, distance toward the 5'/3' ends, and the relative positions of annotation on regions. When extracting genomic features with its main function, various genome properties are interactively extracted from the genomic regions of exons, introns, genes, transcripts, promoters, 5'UTR, 3'UTR, and CDS, establishing a large collection of genome-derived feature set. The input data for RegionPropertiesFeatures are any target genome annotation stored in a Granges object. For example, the target can be intervals of peaks or sites obtained by high-throughput sequencing assays (such as par-CLIP, iCLIP, ChIP-Seq, and meRIP-Seq).
 
-Another important question in the analysis of functional genomic data is to identify the genomic factors that are highly correlated to the target, as these factors may be causally linked to the measurement of interest. RPF can also offer a catalog of highly interpretive genomic & sequence features, which helps to identify the biologically meaningful factors through the feature importance analysis of the predictive models.
+Another important question in the analysis of functional genomic data is to identify the genomic factors that are highly correlated to the target, as these factors may be causally linked to the measurement of interest. RegionPropertiesFeatures can also offer a catalog of highly interpretive genomic & sequence features, which helps to identify the biologically meaningful factors through the feature importance analysis of the predictive models.
 
 ## Overview of functionalities
 
-*RPF* provides fast and comprehensive feature extraction from the
+*RegionPropertiesFeatures* provides fast and comprehensive feature extraction from the
 range-based genome annotation; the extracted features can be used as the
 input for a variety of modeling purposes such as supervised predictive
 modeling and unsupervised factor analysis. The target range-based
@@ -20,7 +20,7 @@ Alternatively, the *GRanges* can be imported from the external
 annotation files in **BED**, **GFF**, or **GTF** formats using the
 `import` function defined in *dplyr* package.
 
-There are 2 types of genomic features implemented in *RPF*: the
+There are 2 types of genomic features implemented in *RegionPropertiesFeatures*: the
 region properties features, and the sequence-derived features. The
 former is extracted using an interactive design between the genomic
 properties and the genomic regions, the latter is the sequence-derived
@@ -31,11 +31,11 @@ pseudo nucleotide composition method.
 
 <div class="figure" style="text-align: left">
 
-<img src="inst/figures/RPF_v1.0.png" alt="Feature extraction framework of RPF" width="100%" />
+<img src="inst/figures/RegionPropertiesFeatures_v1.0.png" alt="Feature extraction framework of RegionPropertiesFeatures" width="100%" />
 
 <p class="caption">
 
-Feature extraction framework of RPF
+Feature extraction framework of RegionPropertiesFeatures
 
 </p>
 
@@ -46,7 +46,7 @@ Feature extraction framework of RPF
 Installation from github can be initiated with the following command:
 
 ``` r
-devtools::install_github("zw-xjtlu/RPF")
+devtools::install_github("zw-xjtlu/RegionPropertiesFeatures")
 ```
 
 ## Quick start
@@ -55,7 +55,7 @@ Here we demonstrate the most basic function of gnomic feature extraction. There 
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(RPF)
+library(RegionPropertiesFeatures)
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(phastCons100way.UCSC.hg19)
@@ -89,9 +89,9 @@ The following additional functions will be explained in the user's guide:
 
 ## Complete User's Guide
 
-For getting more information about the usage of RPF, enter the following R command after installation to view the instruction file:
+For getting more information about the usage of RegionPropertiesFeatures, enter the following R command after installation to view the instruction file:
 
 ``` r
-RPF::RPFUsersGuide()
+RegionPropertiesFeatures::RegionPropertiesFeaturesUsersGuide()
 ```
 

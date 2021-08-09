@@ -193,7 +193,7 @@
 #' ## ---------------------------------------------------------------------
 #' 
 #' ## Load the GRanges of the m6A miCLIP dataset prepared for the classification model:
-#' GSE63753_abcam <- readRDS(system.file("extdata", "GSE63753_abcam.rds", package = "RPF"))
+#' GSE63753_abcam <- readRDS(system.file("extdata", "GSE63753_abcam.rds", package = "RegionPropertiesFeatures"))
 #' 
 #' ## The metadata column of the GRanges is a 0/1 vector, 1 for the positive m6A site, 0 is the negative DRACH:
 #' GSE63753_abcam

@@ -1,4 +1,4 @@
 ## -----------------------------------------------------------------------------
-library(RPF)
+library(RegionPropertiesFeatures)
 RPFUsersGuide()
 
