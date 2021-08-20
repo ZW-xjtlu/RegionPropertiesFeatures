@@ -1,3 +1,9 @@
-*.Rproj*
-.DS_Store*
-.Rhistory
+RegionPropertiesFeatures.Rproj
+vignettes/.Rhistory
+.DS_Store
+inst/.DS_Store
+inst/doc/.DS_Store
+inst/figures/.DS_Store
+man/.DS_Store
+R/.DS_Store
+vignettes/.DS_Store
