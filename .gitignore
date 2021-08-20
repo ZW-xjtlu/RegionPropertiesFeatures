@@ -1,12 +1,7 @@
 RegionPropertiesFeatures.Rproj
 vignettes/.Rhistory
 .DS_Store
-<<<<<<< HEAD
-RegionPropertiesFeatures.Rproj
-vignettes/.Rhistory
-.DS_Store
-=======
->>>>>>> upstream/master
+upstream/master
 inst/.DS_Store
 inst/doc/.DS_Store
 inst/figures/.DS_Store
