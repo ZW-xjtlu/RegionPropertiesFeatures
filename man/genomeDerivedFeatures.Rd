@@ -2,7 +2,7 @@
 % Please edit documentation in R/genomeDerivedFeatures.R
 \name{genomeDerivedFeatures}
 \alias{genomeDerivedFeatures}
-\title{Extract genome-derived predictive features for interval-based data}
+\title{Extract genome-derived predictive features from interval-based data}
 \usage{
 genomeDerivedFeatures(
   x,
@@ -23,7 +23,7 @@ genomeDerivedFeatures(
 
 \item{transcriptdb}{A \link{TxDb} or \link{EnsDb} object for the transcript annotation.}
 
-\item{sequence}{A \link{BSgenome} or \link{XStringSet} object for the genome sequence. 
+\item{sequence}{A \link{BSgenome} or \link{XStringSet} object for the genome sequence.
 See the \link{available.genomes} function for how to install a genome.}
 
 \item{gscores}{A \link{GScores} object specifying the genomic scores to be extracted, or a \code{list} of \code{GScores} for creating properties using more than one type of genomic scores.
@@ -33,7 +33,7 @@ See the vignette for more details: \code{vignette("GenomicScores", package = "Ge
 
 \item{extraRegions}{A \link{GRanges} or \link{GRangesList} providing the additional region to extract properties, can be a \code{list} of \code{GRanges} or \code{GRangesList} to supplement more than one regions.}
 
-\item{flankSizes}{An \code{integer} vector indicating the number of bases flanked by \code{x} when calculating the \code{x} centered properties; default\code{=(25*2^(0:6))}.}
+\item{flankSizes}{An \code{integer} vector indimessageing the number of bases flanked by \code{x} when calculating the \code{x} centered properties; default\code{=(25*2^(0:6))}.}
 
 \item{ambiguityMethod}{By default, except the overlapping features, if \code{x[i]} overlaps multiple regions, the returned property will be the average of the properties over all overlapped regions by \code{x[i]}.
 For the overlapping features, as long as x overlaps any range of the region, the returned value is 1 .
@@ -56,33 +56,33 @@ The column types in the \code{data.frame} are all numeric.
 A function to extract genome-derived features from the input \code{\link{GRanges}} object and the annotations specified by TxDb-like objects.
 }
 \details{
-The function first extract multiple genome-derived properties on x and 13 default region types defined by the TxDb-like object, 
-and it will then assign the region's properties to \code{x} if \code{x} overlapped with the region. 
+The function first extract multiple genome-derived properties on x and 13 default region types defined by the TxDb-like object,
+and it will then assign the region's properties to \code{x} if \code{x} overlapped with the region.
 The specific behaviors of the assignments can be modified through the parameters of \code{ambiguityMethod} and \code{nomapValue}.
 
-Particularly, the 13 default genome region types include \emph{exons}, \emph{introns}, \emph{5'UTR} (exons only), \emph{full 5'UTR}, \emph{CDS} (exons only), \emph{full CDS}, 
+Particularly, the 13 default genome region types include \emph{exons}, \emph{introns}, \emph{5'UTR} (exons only), \emph{full 5'UTR}, \emph{CDS} (exons only), \emph{full CDS},
 \emph{3'UTR} (exons only), \emph{full 3'UTR}, \emph{mature transcripts}, \emph{full transcripts}, \emph{genes} (exons only), \emph{full genes}, and \emph{promoters}.
 
-For each region type, the function can generate 5 types of basic properties accordingly: 
+For each region type, the function can generate 5 types of basic properties accordingly:
 \emph{overlap with region},
-\emph{region length}, 
-\emph{relative position of \code{x} on the region}, 
-\emph{distance to region 5'end}, and 
+\emph{region length},
+\emph{relative position of \code{x} on the region},
+\emph{distance to region 5'end}, and
 \emph{distance to region 3'end.}
 
-In addition, when the corresponding annotation objects are provided, the function can add more types of properties. 
+In addition, when the corresponding annotation objects are provided, the function can add more types of properties.
 Specifically, GC contents of regions are extracted if \code{sequence} is provided;
 Genomic Scores of the regions are extracted if \code{gscores} is provided; and
 Clustering effects of annotations on regions, including Count, Densities, and the Distance to the nearest annotation
-are calculated if \code{clusteringY} is provided. 
+are calculated if \code{clusteringY} is provided.
 
 Genomic regions other the 13 basic types can be defined by supplying the \code{list} of \code{GRanges} objects at \code{extraRegions}.
-Similarly, the input for \code{gscores}, and \code{clusteringY} can be a list so more than one properties can be added for these genomic metrics. 
+Similarly, the input for \code{gscores}, and \code{clusteringY} can be a list so more than one properties can be added for these genomic metrics.
 Please note that the \code{names} of the \code{list} elements will be used to generate the feature names in the output.
 
-Finally, the function will generate 3 extra features to describe the properties uniquely defined at the gene's level: 
-\emph{gene's exon number}, 
-\emph{gene's transcript isoform number} and 
+Finally, the function will generate 3 extra features to describe the properties uniquely defined at the gene's level:
+\emph{gene's exon number},
+\emph{gene's transcript isoform number} and
 \emph{meta-tx topology}.
 
 Please see the package vignettes for the detailed information of those features.
@@ -106,11 +106,11 @@ X <- GRanges(rep(c("chr1", "chr2"), c(15, 15)),
 gfeatures <- genomeDerivedFeatures(X,
                                    transcriptdb=TxDb.Hsapiens.UCSC.hg19.knownGene)
 str(gfeatures)
-             
+
 ## ---------------------------------------------------------------------
 ## ADD MORE PROPERTIES AND REGIONS
 ## ---------------------------------------------------------------------
-\dontrun{
+\donttest{
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(phastCons100way.UCSC.hg19)
 
@@ -120,8 +120,8 @@ gfeatures_expanded <- genomeDerivedFeatures(X,
                                             sequence=BSgenome.Hsapiens.UCSC.hg19,
                                             gscores=phastCons100way.UCSC.hg19,
                                             clusteringY=X) #quantify clustering properties of x itself
-str(gfeatures_expanded) 
- 
+str(gfeatures_expanded)
+
 ## Extract region properties features from Ensemble transcript annotation (EnsDb):
 library(EnsDb.Hsapiens.v75)
 

@@ -42,7 +42,7 @@ exons_gr <- GRanges(c("chr1","chr2","chr2"),
                     strand=c("+","-","-"))
 CpG_regions <- sampleSequence("GG", exons_gr, Hsapiens)
 
-\dontrun{
+\donttest{
 ## Sample 100000 ranges of DRACH motif (the motif of m6A) on all exon regions of hg19:
 exons_hg19 <- exons(TxDb.Hsapiens.UCSC.hg19.knownGene)
 Motif_exons_hg19 <- sampleSequence("DRACH", exons_hg19, Hsapiens, N = 100000)

@@ -25,13 +25,13 @@
 #'                     end=c(12227,41627,46588)),
 #'                     strand=c("+","-","-"))
 #' CpG_regions <- sampleSequence("GG", exons_gr, Hsapiens)
-#' 
-#' \dontrun{
+#'
+#' \donttest{
 #' ## Sample 100000 ranges of DRACH motif (the motif of m6A) on all exon regions of hg19:
 #' exons_hg19 <- exons(TxDb.Hsapiens.UCSC.hg19.knownGene)
 #' Motif_exons_hg19 <- sampleSequence("DRACH", exons_hg19, Hsapiens, N = 100000)
 #' }
-#' 
+#'
 #' @importFrom GenomicRanges reduce GRanges
 #' @importFrom GenomicFeatures mapFromTranscripts
 #' @importFrom GenomeInfoDb seqlengths
@@ -41,12 +41,12 @@ sampleSequence <- function(motif, region, sequence, N = NULL, fixed = FALSE, rep
   stopifnot(is(region, "GRangesList")|is(region, "GRanges"))
   if(is(region, "GRangesList")) region <- unlist(region)
   region <- reduce(region)
-  
-  region_dnass <- getSeq(x=sequence, 
-                         names=seqnames(region), 
-                         start=start(region), 
+
+  region_dnass <- getSeq(x=sequence,
+                         names=seqnames(region),
+                         start=start(region),
                          end=end(region),
-                         strand=strand(region), 
+                         strand=strand(region),
                          as.character=FALSE)
   indx <- paste0("reg_", seq_along(region))
   regions_GRL <- split(region, indx)

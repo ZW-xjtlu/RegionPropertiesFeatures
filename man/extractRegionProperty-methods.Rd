@@ -271,20 +271,20 @@ extractDistToRegion3end(
 \arguments{
 \item{x}{A \link{GRanges} object for the query.}
 
-\item{region}{A \link{GRanges} or \link{GRangesList} object for the subject. 
+\item{region}{A \link{GRanges} or \link{GRangesList} object for the subject.
 If not provided (\code{region=NULL}), the returned properties will be calculated directly from \code{x}.}
 
 \item{property}{A vector specifying the properties/attributes of the \code{region}.}
 
-\item{ambiguityMethod}{By default, for \code{logical} \code{property} input, if x overlaps multiple regions, 
-as long as any of the properties is TRUE, the returned value will be TRUE. 
+\item{ambiguityMethod}{By default, for \code{logical} \code{property} input, if x overlaps multiple regions,
+as long as any of the properties is TRUE, the returned value will be TRUE.
 For other types of \code{property} input, the returned property will be the average of the properties over multiple overlapped regions.
 If \code{ambiguityMethod} is \code{"mean"}, \code{"sum"}, \code{"min"}, or \code{"max"},
 then the mean, sum, minimum, and maximum values of the >1 mapping will be returned in the output value.}
 
 \item{maxgap, minoverlap, type}{See \code{?\link{findOverlaps}} in the \bold{IRanges} package for a description of these arguments.}
 
-\item{nomapValue}{When \code{nomapValue} is \code{"NA"}, \code{"0"}, or \code{"FALSE"}, 
+\item{nomapValue}{When \code{nomapValue} is \code{"NA"}, \code{"0"}, or \code{"FALSE"},
 the \code{x} that do not match the \code{region} will return \code{NA}, \code{0}, and \code{FALSE} respectively.
 If \code{nomapValue} is \code{"nearest"}, the not matched \code{x} will be set to be the property value on its nearest \code{region}.}
 
@@ -292,20 +292,20 @@ If \code{nomapValue} is \code{"nearest"}, the not matched \code{x} will be set t
 
 \item{output.logical}{If \code{TRUE} then the returned value is \code{logical}, otherwise \code{numeric}.}
 
-\item{sequence}{A \link{BSgenome} or \link{XStringSet} object. 
+\item{sequence}{A \link{BSgenome} or \link{XStringSet} object.
 See the \link{available.genomes} function for how to install a genome.}
 
 \item{as.prob, letters}{See \code{?\link{letterFrequency}} in the \bold{Biostrings} package for a description of these arguments.}
 
-\item{efficient}{\code{TRUE} if only internally extract the properties on \code{regions} overlap with \code{x}, 
+\item{efficient}{\code{TRUE} if only internally extract the properties on \code{regions} overlap with \code{x},
 the option makes the computation more efficient if the number of gnomic regions is much larger than the query.}
 
 \item{...}{Additional arguments, it passes to \link{letterFrequency} in method \code{extractRegionLetterFrequency}, and it passes to \link{score} in method \code{extractRegionScores}.}
 
-\item{gscores}{A \link{GScores} object. 
+\item{gscores}{A \link{GScores} object.
 See the vignette for more details: \code{vignette("GenomicScores", package = "GenomicScores")}.}
 
-\item{missingScores}{Specifying the imputation methods on missing scores in \code{extractRegionScores}, 
+\item{missingScores}{Specifying the imputation methods on missing scores in \code{extractRegionScores},
 default is returning zero for unknown gscores under the region.}
 
 \item{y}{A \link{GRanges} or \link{GRangesList} object for the clustering annotation.}
@@ -323,38 +323,38 @@ For \code{extractRegionProperty}, the vector type depends on the type of \code{p
 For \code{extractRegionOverlap} either logical when \code{output.logical = TRUE} or a numeric otherwise.
 }
 \description{
-Methods for annotating the query \link{GenomicRanges} with various properties on the subject regions, 
+Methods for annotating the query \link{GenomicRanges} with various properties on the subject regions,
 and the subject regions could be either \link{GenomicRanges} or \link{GRangesList} objects.
 
 The \code{extractRegionProperty} function extract the annotations on each query ranges from the properties of their overlapping/nearest subject regions.
 
-Other functions are specific implementations of \code{extractRegionProperty}, 
+Other functions are specific implementations of \code{extractRegionProperty},
 and their purpose is to summarize the genomic features frequently involved in functional genomics analysis.
 
-\code{extractRegionOverlap} computes the overlapping of each query ranges with the subject regions. 
-Likewise, the \code{extractRegionLength}, \code{extractRegionLetterFrequency}, and \code{extractRegionScores} functions 
+\code{extractRegionOverlap} computes the overlapping of each query ranges with the subject regions.
+Likewise, the \code{extractRegionLength}, \code{extractRegionLetterFrequency}, and \code{extractRegionScores} functions
 compute the Lengths, Sequence Contents, and \link{GenomicScores} of the overlapped subjects.
 
-\code{extractRegionYCount} and \code{extractRegionNearestDistToY} quantify the density/distance of an annotation (Y) 
+\code{extractRegionYCount} and \code{extractRegionNearestDistToY} quantify the density/distance of an annotation (Y)
 over the subject regions, the resulting properties can capture the clustering effect between the subject region and the annotation object.
 
 The functions \code{extractDistToRegion5end} & \code{extractDistToRegion3end} retrieve the distance between the query and ends of the subject, and
-the \code{extractRegionRelativePosition} function extract the relative position of the query in the matched regions. 
+the \code{extractRegionRelativePosition} function extract the relative position of the query in the matched regions.
 Specifically, the relative position is calculated by dividing the distance of the query to the 5'-end of the region by the length of the region.
 }
 \details{
 Please check the documentation of \link{extractRegionProperty} for details.
 
-For specific extractor functions, when only x is provided with \code{region = NULL}, 
-the functions directly use the query ranges to calculate the corresponding properties. 
+For specific extractor functions, when only x is provided with \code{region = NULL},
+the functions directly use the query ranges to calculate the corresponding properties.
 
-In case the region ranges are provided, 
+In case the region ranges are provided,
 the extractor functions first find the index where x overlaps with the region and then matches the property of the region to the query GRanges according to the overlapping index.
 
-For \code{nomapValue = "nearest"}, 
-when ranges in \code{x} do not overlap with ranges in \code{regions}, the extractor functions will additionally match the unmapped x with its nearest region. 
+For \code{nomapValue = "nearest"},
+when ranges in \code{x} do not overlap with ranges in \code{regions}, the extractor functions will additionally match the unmapped x with its nearest region.
 
-For \code{extractRegionNearestDistToY}, if ranges in \code{y} overlap the ranges in \code{x}, 
+For \code{extractRegionNearestDistToY}, if ranges in \code{y} overlap the ranges in \code{x},
 the overlapped ranges in \code{y} are skipped and the ranges precede or follow \code{x} are used to calculate the distances.
 }
 \examples{
@@ -367,13 +367,13 @@ library(GenomicRanges)
 x_gr <- GRanges(rep(c("chr1", "chr2"), c(5, 15)),
                 IRanges(c(sample(11874:12127, 5), sample(38814:41527,15)), width=100),
                 strand=Rle(c("+", "-"), c(5, 15)))
-x_gr    
+x_gr
 
 ## The region GRanges or GRangesList object:
 exons_gr <- GRanges(c("chr1","chr2","chr2"),
                     IRanges(start=c(11874,38814,45440),end=c(12227,41627,46588)),
                      strand=c("+","-","-"))
-genes_grl <- GRangesList(gene1=exons_gr[1],gene2=exons_gr[c(2,3)])        
+genes_grl <- GRangesList(gene1=exons_gr[1],gene2=exons_gr[c(2,3)])
 
 ## Extract lengths of the query:
 extractRegionLength(x_gr)
@@ -403,7 +403,7 @@ extractRegionYCount(x_gr, x_gr, genes_grl)
 
 ## Clustering with another annotation:
 y_gr <- GRanges(rep(c("chr1", "chr2"), c(50, 50)),
-                IRanges(c(sample(11874:12127, 50), 
+                IRanges(c(sample(11874:12127, 50),
                           sample(38814:41527,50)), width=1),
                 strand=Rle(c("+", "-"), c(50, 50)))
 
@@ -424,7 +424,7 @@ extractDistToRegion3end(x_gr, genes_grl)
 
 ## Extract features that depends on sequence/annotation packages:
 
-\dontrun{
+\donttest{
 
 library(BSgenome.Hsapiens.UCSC.hg19)
 bsgenome <- BSgenome.Hsapiens.UCSC.hg19
@@ -468,8 +468,8 @@ GSE63753_abcam$exon_length <- extractRegionLength(GSE63753_abcam, exons(TxDb.Hsa
 library(ggplot2)
 
 ggplot(na.omit(as.data.frame(mcols(GSE63753_abcam))), aes(log(exon_length), target)) +
-  geom_smooth(formula = y ~ splines::ns(x, 3), method = "glm", method.args = list(family = "binomial")) + 
-  geom_hline(yintercept = 0.5, linetype = 3) + 
+  geom_smooth(formula = y ~ splines::ns(x, 3), method = "glm", method.args = list(family = "binomial")) +
+  geom_hline(yintercept = 0.5, linetype = 3) +
   scale_x_continuous(limits = c(4,9)) +
   scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1)) +
   theme_classic() + labs(x = "log(length of exon)", y = "prob of m6A = 1", title = "LR fit with cubic splines")

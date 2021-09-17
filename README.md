@@ -49,6 +49,15 @@ Installation from github can be initiated with the following command:
 devtools::install_github("zw-xjtlu/RegionPropertiesFeatures")
 ```
 
+Alternatively, it can be downloaded from bioconductor with:
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("RegionPropertiesFeatures")
+```
+
 ## Quick start
 
 Here we demonstrate the most basic function of gnomic feature extraction. There are variety of bioconductor objects that are necessary to provide annotations if the corresponding property types are required, which we will display in the section bellow. The code chunk below assumes you have a GRanges for your target genomic intervals called `grg`. The `txdb` is a TxDb object for the transcript annotation, here we should use the annotation from the same genome assembly of `grg`. The `bsgemone` and `phastcons` are the reference genome and genome conservation scores, respectively. 
